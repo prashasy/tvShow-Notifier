@@ -12,7 +12,15 @@ def sql_connect():
 	cur.execute("create table pairs(user_id integer,series_id integer)")
 
 
-
+	tup=['prashasy','prashasy@tiedc.in','game of thrones,west world']
+	cur=con.cursor()
+	try:
+		cur.execute("insert into users(name,email)values(?,?)",(tup[0],tup[1]))
+	except:
+		print("Error. User exists")
+	print("Data Inserted in users")
+	try:
+		cur.execute("select case when exists(select 1 from tv_series where name={?})")
 
 
 	con.close()
