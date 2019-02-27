@@ -7,5 +7,7 @@ ${body}
 
 
 Thanks a lot for associating with us.
-
-
+We will keep sending regular updates to you.
+For any queries feel free to mail us at: prashasyashok@gmail.com
+Contribute to te service @ github.com/prashasy/tvShow-Notifier
+Follow: www.linkedin.com/in/prashasy-ashok
