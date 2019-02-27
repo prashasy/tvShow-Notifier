@@ -147,9 +147,9 @@ def imdb_data(series):
 
 
 def main():
-	user="Prashasy"
-	email="prashasyrock@gmail.com"
-	series="game of thrones,westworld"
+	user=input("Name: ")
+	email=input("Email: ")
+	series=input("Series: ")
 	series=series.split(',')
 	print(series)
 	msg=""
