@@ -1,0 +1,11 @@
+
+Hello ${person},
+
+We just got some status updates on your favourite TV Series. These are straight outta IMDb!.
+
+${body}
+
+
+Thanks a lot for associating with us.
+
+
