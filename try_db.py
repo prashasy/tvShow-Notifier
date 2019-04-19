@@ -21,7 +21,11 @@ name="Prashasy"
 email="prashasyashok@gmail.com"
 series="game of thrones,friends,suits,riverdale"
 
-cur.execute("insert into users(name,email) values(?,?)",(name,email))
+try:
+    cur.execute("insert into users(name,email) values(?,?)",(name,email))
+except:
+    print("Error. User exists")
+
 series=series.split(",")
 for item in series:
     res=cur.execute("SELECT EXISTS(SELECT 1 FROM tv_series WHERE name=(?) LIMIT 1)",(item,))
