@@ -5,10 +5,12 @@ def sql_connect():
 	
 	print("Database created successfully")
 	cur=con.cursor()
-	cur.execute("create table users (id integer primary key,name text,email text unique,date real)")
+	cur.execute("create table users (id integer primary key,uname text,email text unique)")
 	print("Table users created successfully!!")
+
 	cur.execute("create table tv_series (id integer primary key,name text)")
 	print("Table tv_series created successfully!!")
+	
 	cur.execute("create table pairs(user_id integer,series_id integer)")
 
 	tup=['prashasy','prashasy@tiedc.in','game of thrones,west world']
@@ -20,7 +22,7 @@ def sql_connect():
 	print("Data Inserted in users")
 	# try:
 	# 	cur.execute("select case when exists(select 1 from tv_series where name={?})")
-
+	con.commit()
 	con.close()
 
 sql_connect()
