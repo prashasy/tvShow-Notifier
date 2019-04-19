@@ -18,10 +18,8 @@ def sql_connect():
 	except:
 		print("Error. User exists")
 	print("Data Inserted in users")
-	try:
-		cur.execute("select case when exists(select 1 from tv_series where name={?})")
-
-
+	# try:
+	# 	cur.execute("select case when exists(select 1 from tv_series where name={?})")
 
 	con.close()
 

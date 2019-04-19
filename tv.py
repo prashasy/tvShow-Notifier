@@ -43,13 +43,6 @@ def get_date(a):
 
 
 
-
-
-
-
-
-
-
 def read_template():
     with open('message.txt', 'r', encoding='utf-8') as template_file:
         template_file_content = template_file.read()
