@@ -12,7 +12,6 @@ def sql_connect():
 	print("Table tv_series created successfully!!")
 
 	cur.execute("create table pairs(user_id integer,series_id integer)")
-
 	con.commit()
 	con.close()
 

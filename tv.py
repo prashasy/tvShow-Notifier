@@ -146,6 +146,7 @@ def main():
 	series=series.split(',')
 	print(series)
 	msg=""
+	m=''
 
 	con=sql.connect("user_data.db")
 	cur=con.cursor()
@@ -168,7 +169,7 @@ def main():
 			else:
 				res=cur.execute("select updates from tv_series where name=(?)",(item,))
 				for i in res:
-					m+=i
+					m+=i[0]
 					print(i)
 
 	con.commit()
@@ -180,10 +181,10 @@ def main():
 
 	msg+=m
 
-	# for user in users:
+
 	message_template = read_template()
 	message = message_template.substitute(person=user,body=msg)
-	#send(email,message)
+	send(email,message)
 	print(message)
 
 
