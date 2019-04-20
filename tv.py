@@ -6,7 +6,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import smtplib
 from string import Template
-
+import sqlite3 as sql
 
 
 def switcher(argument):
@@ -156,15 +156,14 @@ def main():
 	except:
 		print("Error. User exists")
 
-	series=series.split(",")
 	for item in series:
 		res=cur.execute("SELECT EXISTS(SELECT 1 FROM tv_series WHERE name=(?) LIMIT 1)",(item,))
 		for i in res:
 			if(i[0]==0):
 
-				m="TV Series: "+name +"\n" +"Status: "+imdb_data(name)+"\n\n"
+				m="TV Series: "+item +"\n" +"Status: "+imdb_data(item)+"\n\n"
 				print(m)
-				cur.execute("insert into tv_series(name,updates) values(?)",(item,m))
+				cur.execute("insert into tv_series(name,updates) values(?,?)",(item,m))
 			else:
 				res=cur.execute("select updates from tv_series where name=(?)",(item,))
 				for i in res:
@@ -178,8 +177,7 @@ def main():
 
 
 
-
-msg+=m
+	msg+=m
 
 	# for user in users:
 	message_template = read_template()
