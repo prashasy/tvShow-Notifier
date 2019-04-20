@@ -4,11 +4,6 @@ con=sql.connect("user_data.db")
 cur=con.cursor()
 
 
-#DELETE
-# cur.execute("delete from tv_series")
-# res=cur.execute("select * from tv_Series")
-# for each in res:
-#     print(each)
 
 
 #INSERT
