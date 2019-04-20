@@ -5,13 +5,6 @@ cur=con.cursor()
 
 
 
-
-#INSERT
-# series="suits"
-# res=cur.execute("insert into tv_series(name) values(?)",(series,))
-
-
-
 name="Prashasy"
 email="prashasyashok@gmail.com"
 series="game of thrones,friends,suits,riverdale"
