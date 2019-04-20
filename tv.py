@@ -152,22 +152,23 @@ def main():
 
 
 	try:
-		cur.execute("insert into users(name,email) values(?,?)",(user,email))
+		cur.execute("insert into users(uname,email) values(?,?)",(user,email))
 	except:
 		print("Error. User exists")
+		return
 
 	for item in series:
 		res=cur.execute("SELECT EXISTS(SELECT 1 FROM tv_series WHERE name=(?) LIMIT 1)",(item,))
 		for i in res:
 			if(i[0]==0):
 
-				m="TV Series: "+item +"\n" +"Status: "+imdb_data(item)+"\n\n"
+				m+="TV Series: "+item +"\n" +"Status: "+imdb_data(item)+"\n\n"
 				print(m)
 				cur.execute("insert into tv_series(name,updates) values(?,?)",(item,m))
 			else:
 				res=cur.execute("select updates from tv_series where name=(?)",(item,))
 				for i in res:
-					m=i
+					m+=i
 					print(i)
 
 	con.commit()
