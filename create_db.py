@@ -8,9 +8,9 @@ def sql_connect():
 	cur.execute("create table users (id integer primary key,uname text,email text unique)")
 	print("Table users created successfully!!")
 
-	cur.execute("create table tv_series (id integer primary key,name text)")
+	cur.execute("create table tv_series (id integer primary key,name text,updates text)")
 	print("Table tv_series created successfully!!")
-	
+
 	cur.execute("create table pairs(user_id integer,series_id integer)")
 
 	tup=['prashasy','prashasy@tiedc.in','game of thrones,west world']

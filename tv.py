@@ -146,25 +146,47 @@ def main():
 	series=series.split(',')
 	print(series)
 	msg=""
+
+	con=sql.connect("user_data.db")
+	cur=con.cursor()
+
+
+	try:
+		cur.execute("insert into users(name,email) values(?,?)",(user,email))
+	except:
+		print("Error. User exists")
+
+	series=series.split(",")
+	for item in series:
+		res=cur.execute("SELECT EXISTS(SELECT 1 FROM tv_series WHERE name=(?) LIMIT 1)",(item,))
+		for i in res:
+			if(i[0]==0):
+
+				m="TV Series: "+name +"\n" +"Status: "+imdb_data(name)+"\n\n"
+				print(m)
+				cur.execute("insert into tv_series(name,updates) values(?)",(item,m))
+			else:
+				res=cur.execute("select updates from tv_series where name=(?)",(item,))
+				for i in res:
+					m=i
+					print(i)
+
+	con.commit()
+	con.close()
+
+
+
+
+
+
+msg+=m
+
 	# for user in users:
 	message_template = read_template()
-	for name in series:
-		m="TV Series: "+name +"\n" +"Status: "+imdb_data(name)+"\n\n"
-		msg+=m
-		print(m)
 	message = message_template.substitute(person=user,body=msg)
-	send(email,message)
-
+	#send(email,message)
+	print(message)
 
 
 if __name__=='__main__':
 	main()
-
-
-
-
-
-
-
-
-

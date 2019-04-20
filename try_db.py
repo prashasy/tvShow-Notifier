@@ -32,6 +32,10 @@ for item in series:
     for i in res:
         if(i[0]==0):
             cur.execute("insert into tv_series(name) values(?)",(item,))
+        else:
+            res=cur.execute("select updates from tv_series where name=(?)",(item,))
+            for i in res:
+                print(i)
 res=cur.execute("select * from tv_Series")
 for each in res:
     print(each)
