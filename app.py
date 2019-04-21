@@ -1,10 +1,8 @@
 from flask import Flask
 from flask import Flask, flash, redirect, render_template, request, session, abort,send_file
 import os
-import whois_lookup
-from fpdf import FPDF
-import datetime
- 
+import tv
+
 app = Flask(__name__)
  
 
