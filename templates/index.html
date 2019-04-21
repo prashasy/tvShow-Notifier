@@ -1,0 +1,245 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cybervie</title>
+    <meta
+      name="description"
+      content="Fuzzy Question Paper Search Portal by metaJUIT."
+    />
+    <meta name="metaJUIT" content="" />
+    <!-- Iconify-->
+    <script src="https://code.iconify.design/1/1.0.0-rc6/iconify.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-134206754-1"
+    ></script>
+
+    <!-- CSS dependencies -->
+    <link rel="stylesheet" href="./static/aquamarine.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      type="text/css"
+    />
+    <script src="./static/js/animate-in.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"
+    />
+    <style>
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: white;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #fff;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+    <script src="resources/scripts/string_score.min.js"></script>
+    <script src="https://cdn.rawgit.com/websanova/js-url/daeed5ec/url.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/2.6.1/fuse.min.js"></script>
+  </head>
+  <body class="bg-dark">
+    <canvas id="nokey" style="position:absolute;" width="1000" height="2000">
+      Your Browser Don't Support Canvas, Please Download Chrome ^_^``
+    </canvas>
+    <div id="content">
+      <!-- Navbar -->
+      <!-- Cover -->
+      <div id="maincontainer" class="d-flex text-left  py-4  " style="">
+        <div class="container">
+          <div id="headc" class="row mt-1">
+            <div class="container">
+              <div class="row  pt-1">
+                <div
+                  class="order-2  order-md-1 col-md-6   animated slideInDown faster"
+                >
+                  <img
+                    class="img-fluid d-block rounded shadow-none"
+                    src="/static/logo.gif"
+                    style="text-shadow: 0px 0px 4px black, 0px 0px 4px black;"
+                    height="50"
+                    width="80"
+                  />
+                </div>
+                <div
+                  class="  animated slideInDown faster px-md-5 d-flex flex-column justify-content-center order-1 order-md-4 col-md-6 w-100"
+                  style=""
+                >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row animated slideInUp">
+            <div class="col-lg-12 text-white mt-3">
+              <form id="home" method="POST">
+                <input
+                  type="text"
+                  type="text"
+                  id="query"
+                  autocomplete="off"
+                  class="form-control form-control-lg text-center shadowed bg-dark text-light"
+                  id="inlineFormInputGroup"
+                  name="user"
+                  placeholder="Enter username"
+                />
+                <input
+                  type="email"
+                  type="email"
+                  id="query"
+                  autocomplete="off"
+                  class="form-control form-control-lg text-center shadowed bg-dark text-light"
+                  id="inlineFormInputGroup"
+                  name="email"
+                  placeholder="Enter email"
+                />
+                <input
+                  type="text"
+                  type="text"
+                  id="query"
+                  autocomplete="off"
+                  class="form-control form-control-lg text-center shadowed bg-dark text-light"
+                  id="inlineFormInputGroup"
+                  name="series"
+                  placeholder="Enter series names"
+                />
+                <input type="submit" value="Search" hidden>
+
+              </form>
+            </div>
+          </div>
+{% block body %}
+<table border = 1>
+{% for key in details %}
+            <tr>
+               <td> {{ key }} </td>
+              {% if key=="sub-domains" %}
+              {% for item in details[key] %}
+                </tr>
+                <tr><td></td>
+                <td>{{item}}</td>
+                {% endfor %}
+              
+                {% else %}
+                  <td> {{ details[key] }} </td>
+            </tr>
+            {% endif %}
+
+
+{% endfor %}
+</table>
+<!-- {% if details %} -->
+<!-- <a href="report.pdf" download><button >Download Report</button></a> -->
+<!-- {% endif %} -->
+{% endblock %}
+<a href="download" download><button >Download Report</button></a>
+
+
+
+
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <div id="result" class="container hidden">
+                <div class="row">
+                  <div class="col-md-12" style="overflow: auto; height :550px">
+                    <div class="result-div list-group"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+      <!-- Footer -->
+      <footer
+        class="animated slideInUp text-md-left text-center p-4  text-light"
+      >
+        <div class="container">
+          <div class="row">
+            <div class="my-3 fluid">
+              <a href="http://metajuit.org" target="_blank"
+                >   <img
+                    class="img-fluid d-block rounded shadow-none"
+                    src="/static/logo.gif"
+                    style="text-shadow: 0px 0px 4px black, 0px 0px 4px black;"
+                    height="50"
+                    width="80"
+                  />
+                </a>
+              <p class="text-muted">
+                All Rights Reserved © 2019 | cybervie
+              </p>
+              <p>
+                Made with
+                <span
+                  class="iconify"
+                  data-icon="twemoji-red-heart"
+                  data-inline="false"
+                ></span>
+                <a href="http://github.com/prashasy" target="_blank"> Prashasy</a>
+              </p>
+            </div>
+
+
+          </div>
+          <p class="text-center">
+            Developed by Prashasy | Powered with
+            <span
+              class="iconify"
+              data-icon="twemoji-red-heart"
+              data-inline="false"
+            ></span>
+            by Cybervie
+          </p>
+        </div>
+      </footer>
+      <!-- JavaScript dependencies -->
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        crossorigin="anonymous"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      ></script>
+      <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        crossorigin="anonymous"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      ></script>
+      <!-- Script: Smooth scrolling between anchors in the same page -->
+      <script src="./static/js/smooth-scroll.js"></script>
+      <script src="./static/assets/js/particles.js"></script>
+      <script src="./static/assets/js/ResizeSensor.js"></script>
+      <script src="./static/assets/js/ElementQueries.js"></script>
+      <script>
+        new ResizeSensor(jQuery("#content"), function() {
+          console.log("body resize");
+          initCanvas();
+        });
+      </script>
+    </div>
+                </div>
+          </div>
+  </body>
+</html>
