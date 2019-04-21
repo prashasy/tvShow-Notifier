@@ -144,11 +144,10 @@
 
 {% endfor %}
 </table>
-<!-- {% if details %} -->
-<!-- <a href="report.pdf" download><button >Download Report</button></a> -->
-<!-- {% endif %} -->
+{% if details %}
+<a href="report.pdf" download><button >Download Report</button></a>
+{% endif %}
 {% endblock %}
-<a href="download" download><button >Download Report</button></a>
 
 
 
@@ -187,7 +186,7 @@
                     width="80"
                   />
  -->              <p class="text-muted">
-                All Rights Reserved © 2019 | cybervie
+                All Rights Reserved © 2019 | Prashasy
               </p>
               <p>
                 Made with
@@ -203,13 +202,7 @@
 
           </div>
           <p class="text-center">
-            Developed by Prashasy | Powered with
-            <span
-              class="iconify"
-              data-icon="twemoji-red-heart"
-              data-inline="false"
-            ></span>
-            by Cybervie
+            Developed by Prashasy
           </p>
         </div>
       </footer>
