@@ -6,7 +6,7 @@ import tv
 app = Flask(__name__)
  
 
-a={}
+
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -14,11 +14,11 @@ def home():
 
 @app.route("/", methods=['POST'])
 def search():
-    global a
     user=request.form['user']
     email=request.form['email']
     series=request.form['series']
     a=tv.main(user,email,series)
+    print(a)
     return render_template("index.html",details=a)
 
 

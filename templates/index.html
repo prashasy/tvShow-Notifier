@@ -124,28 +124,10 @@
               </form>
             </div>
           </div>
+
 {% block body %}
-<table border = 1>
-{% for key in details %}
-            <tr>
-               <td> {{ key }} </td>
-              {% if key=="sub-domains" %}
-              {% for item in details[key] %}
-                </tr>
-                <tr><td></td>
-                <td>{{item}}</td>
-                {% endfor %}
-              
-                {% else %}
-                  <td> {{ details[key] }} </td>
-            </tr>
-            {% endif %}
-
-
-{% endfor %}
-</table>
 {% if details %}
-<a href="report.pdf" download><button >Download Report</button></a>
+{{details}}
 {% endif %}
 {% endblock %}
 

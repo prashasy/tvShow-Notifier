@@ -5,7 +5,7 @@ def sql_connect():
 	
 	print("Database created successfully")
 	cur=con.cursor()
-	cur.execute("create table users (id integer primary key,uname text,email text unique)")
+	cur.execute("create table users (id integer primary key,uname text,email text)")
 	print("Table users created successfully!!")
 
 	cur.execute("create table tv_series (id integer primary key,name text,updates text)")

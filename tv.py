@@ -139,10 +139,10 @@ def imdb_data(series):
 
 
 
-def main():
-	user=input("Name: ")
-	email=input("Email: ")
-	series=input("Series: ")
+def main(user,email,series):
+	# user=input("Name: ")
+	# email=input("Email: ")
+	# series=input("Series: ")
 	series=series.split(',')
 	print(series)
 	msg=""
@@ -186,6 +186,7 @@ def main():
 	message = message_template.substitute(person=user,body=msg)
 	send(email,message)
 	print(message)
+	return(msg)
 
 
 if __name__=='__main__':
