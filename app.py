@@ -2,6 +2,7 @@ from flask import Flask
 from flask import Flask, flash, redirect, render_template, request, session, abort,send_file
 import os
 import tv
+import update_database
 
 app = Flask(__name__)
  
@@ -21,7 +22,10 @@ def search():
     print(a)
     return render_template("index.html",details=a)
 
-
+@app.route("/update")
+def update():
+	update_database.run_update()
+	return render_template("index.html")
 
 
 if __name__ == "__main__":
