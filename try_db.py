@@ -10,7 +10,7 @@ email="prashasyashok@gmail.com"
 series="game of thrones,friends,suits,riverdale"
 
 try:
-    cur.execute("insert into users(name,email) values(?,?)",(name,email))
+    cur.execute("insert into users(uname,email) values(?,?)",(name,email))
 except:
     print("Error. User exists")
 
