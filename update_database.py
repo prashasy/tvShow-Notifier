@@ -11,6 +11,7 @@ def run_update():
 			m+="TV Series: "+item +"\n" +"Status: "+tv.imdb_data(item)+"\n\n"
 			try:
 				result=cur.execute("insert into tv_series(updates) values(?)",(m,))
+				print("Database Updated for: "+item)
 			except:
 				print("Error inserting data for {}".format("item"))
 	except:
