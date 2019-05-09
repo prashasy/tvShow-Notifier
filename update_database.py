@@ -8,12 +8,16 @@ def run_update():
 		res=cur.execute("select name from tv_series")
 		m=""
 		for item in res:
-			m+="TV Series: "+item +"\n" +"Status: "+tv.imdb_data(item)+"\n\n"
+			print(item[0])
+			m+="TV Series: "+item[0] +"\n" +"Status: "+tv.imdb_data(item[0])+"\n\n"
+			print(m)
 			try:
-				result=cur.execute("insert into tv_series(updates) values(?)",(m,))
-				print("Database Updated for: "+item)
-			except:
-				print("Error inserting data for {}".format("item"))
+				temp=item[0]
+				result=cur.execute("update tv_series set updates=? where name=?",(m,temp))
+				print("Database Updated for: "+item[0])
+			except sql.Error as e:
+				print("Error inserting data for {}".format(item[0]))
+				print("Error->"+e)
 	except:
 		print("Error finding names of series")
 run_update()

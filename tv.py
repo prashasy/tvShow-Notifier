@@ -108,6 +108,8 @@ def imdb_data(series):
 	next=""
 	flag=0
 	for date in html.find_all('div',class_='airdate'):
+		print(date.text)
+		print(len(date.text))
 		if len(date.text)==1:
 			flag=2
 			continue
@@ -184,8 +186,8 @@ def main(user,email,series):
 
 	message_template = read_template()
 	message = message_template.substitute(person=user,body=msg)
-	send(email,message)
-	print(message)
+	#send(email,message)
+	# print(message)
 	return(msg)
 
 
