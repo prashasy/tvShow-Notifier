@@ -20,4 +20,5 @@ def run_update():
 				print("Error->"+e)
 	except:
 		print("Error finding names of series")
+	con.commit()
 run_update()
