@@ -53,7 +53,7 @@ def send(to,message):
 	s = smtplib.SMTP('smtp.gmail.com', 587)
 	s.ehlo()
 	s.starttls()
-	s.login("prashasyashok@gmail.com","inteli007")
+	s.login("prashasyashok@gmail.com","")
 
 	msg=MIMEMultipart()
 	msg['From']='prashasyashok@gmail.com'
