@@ -29,7 +29,7 @@ nbformat==4.4.0
 netifaces==0.10.9
 olefile==0.44
 pefile==2018.8.8
-Pillow==4.0.0
+Pillow==9.0.1
 plotly==3.4.2
 PyInstaller==3.4
 PyQt5==5.12.1
